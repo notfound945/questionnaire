@@ -67,8 +67,7 @@
 </template>
 
 <script>
-import axios from 'axios'
-import qs from 'qs'
+import { postRequest, getRequest } from 'src/axios'
 import { Notify } from 'quasar'
 
 export default {
@@ -93,12 +92,8 @@ export default {
   },
   async mounted () {
     // 加载验证码
-    this.verifyImage = await this.$axios.get(
-      '/api/getCaptchaImage',
-      {
-        responseType: 'blob',
-        withCredentials: true
-      }).then(result => {
+    this.verifyImage = await getRequest(
+      '/api/getCaptchaImage', 'blob').then(result => {
       return result.data
     }).catch(() => {
       return null
@@ -113,7 +108,7 @@ export default {
         password: this.password,
         validate: this.validate
       }
-      axios.post('/api/login', qs.stringify(params)).then(res => {
+      postRequest('/api/login', params).then(res => {
         if (res.data.requestCode === 200) {
           console.log('登录成功')
           Notify.create({
@@ -129,6 +124,7 @@ export default {
               position: 'top',
               color: 'red-4',
               textColor: 'white',
+              icon: 'cancel',
               message: res.data.responseRemark
             })
           } else {
@@ -136,6 +132,7 @@ export default {
               position: 'top',
               color: 'red-6',
               textColor: 'white',
+              icon: 'cancel',
               message: '登录异常'
             })
           }
@@ -148,34 +145,14 @@ export default {
       this.verifyImage = null
       this.imgUrl = null
       // 加载验证码
-      this.verifyImage = await axios.get(
-        '/api/getCaptchaImage',
-        {
-          responseType: 'blob'
-        }).then(result => {
+      this.verifyImage = await getRequest(
+        '/api/getCaptchaImage', 'blob').then(result => {
         return result.data
       }).catch(() => {
         return null
       })
       const blob = new Blob([this.verifyImage], { type: 'image/png;charset=utf-8' })
       this.imgUrl = window.URL.createObjectURL(blob)
-    },
-    test () {
-      axios.interceptors.response.use((response) => {
-        return response
-      }, function (error) {
-        if (error.response.status === 401) {
-          console.log('未登录')
-        } else {
-          return Promise.reject(error)
-        }
-      })
-      axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-      axios.get('/api/log').then(res => {
-        console.log(res)
-      }).catch(error => {
-        console.log(error)
-      })
     }
   }
 }

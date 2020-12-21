@@ -18,8 +18,10 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Form.vue') }
     ]
+  }, {
+    path: '/debug',
+    component: () => import('pages/DebugPage')
   },
-
   // Always leave this as last one,
   // but you can also remove it
   {
