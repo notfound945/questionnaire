@@ -1,27 +1,28 @@
 <template>
   <div class="q-pa-md">
-    <div class="text-subtitle1">问题 {{no}} ：{{ title }}</div>
+    <div class="text-subtitle1">问题 {{ no }} ：{{ title }}</div>
     <q-option-group
       v-model="result"
       :options="content"
-      color="primary"
+      color="green"
+      type="checkbox"
       :inline="inline"
     />
-    <div v-if="result != null" class="text-subtitle2">你的选择是：{{ radioSelect }}</div>
+    <div v-if="result.length !== 0" class="text-subtitle2">你的选择是：{{ checkSelect }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'RadioField',
+  name: 'CheckBoxField',
   props: ['title', 'no', 'content', 'inline'],
   data () {
     return {
-      result: null
+      result: []
     }
   },
   computed: {
-    radioSelect: function () {
+    checkSelect: function () {
       return this.result
     }
   }

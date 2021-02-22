@@ -3749,6 +3749,11 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
+eve-raphael@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/eve-raphael/-/eve-raphael-0.5.0.tgz#17c754b792beef3fa6684d79cf5a47c63c4cda30"
+  integrity sha1-F8dUt5K+7z+maE15z1pHxjxM2jA=
+
 eventemitter3@^4.0.0:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
@@ -4092,6 +4097,13 @@ flatted@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.2.tgz#4575b21e2bcee7434aa9be662f4b7b5f9c2b5138"
   integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
+
+flowchart.js@^1.13.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/flowchart.js/-/flowchart.js-1.15.0.tgz#132ba2df14af0a65e67280026ef05a1ffd16569f"
+  integrity sha512-IyCVUFfHPLPgKLynw3NCkZ7CvKJdc/bAu0aHm+2AxKhtSBCiUC1kcTX1KautC3HOp1A2JS1IOcYxDTmcMkx5nQ==
+  dependencies:
+    raphael "2.3.0"
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
@@ -4521,6 +4533,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
+
+highlight.js@^9.16.2:
+  version "9.18.5"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.18.5.tgz#d18a359867f378c138d6819edfc2a8acd5f29825"
+  integrity sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -5370,6 +5387,15 @@ lazystream@^1.0.0:
   integrity sha1-9plf4PggOS9hOWvolGJAe7dxaOQ=
   dependencies:
     readable-stream "^2.0.5"
+
+le-markdown-editor@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/le-markdown-editor/-/le-markdown-editor-1.1.3.tgz#d7938b8ccb5a86ea0bec47ae292a1a0f817b8f69"
+  integrity sha512-2FbJKX4Ckw7pD0Glf85UzwOCxowE4nEo38turdOCJifz1UsF7MEj+MWSmsLVH5gITJYnXOibQh+vZr8cgSfG5A==
+  dependencies:
+    express "^4.17.1"
+    flowchart.js "^1.13.0"
+    highlight.js "^9.16.2"
 
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
@@ -7270,6 +7296,13 @@ range-parser@^1.2.1, range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
+
+raphael@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/raphael/-/raphael-2.3.0.tgz#eabeb09dba861a1d4cee077eaafb8c53f3131f89"
+  integrity sha512-w2yIenZAQnp257XUWGni4bLMVxpUpcIl7qgxEgDIXtmSypYtlNxfXWpOBxs7LBTps5sDwhRnrToJrMUrivqNTQ==
+  dependencies:
+    eve-raphael "0.5.0"
 
 raw-body@2.4.0:
   version "2.4.0"
