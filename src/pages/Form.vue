@@ -4,12 +4,12 @@
       <div class="q-my-md text-h5 text-center">
         <div class="row q-gutter-xs justify-center items-center" v-if="!title.isEdit">
           <div>{{ title.content }}</div>
-          <q-btn @click="editTitle" flat round color="primary" icon="create" />
+          <q-btn @click="editTitle" flat round color="primary" icon="create"/>
         </div>
         <div v-else class="row justify-center items-center">
           <q-input class="justify-center items-center" style="font-size: 20px" v-model="title.editContent"/>
-          <q-btn @click="changeTitle(title.editContent)" flat round color="primary" icon="done" />
-          <q-btn @click="changeTitle(title.content)" flat round color="secondary" icon="clear" />
+          <q-btn @click="changeTitle(title.editContent)" flat round color="primary" icon="done"/>
+          <q-btn @click="changeTitle(title.content)" flat round color="secondary" icon="clear"/>
         </div>
       </div>
       <div v-if="!subtitle.isEdit" class="q-ma-md">
@@ -19,11 +19,11 @@
         <le-editor class="le-editor" hljs-css="agate" v-model="subtitle.editContent" @save="markdownSave"></le-editor>
       </div>
       <div v-if="!subtitle.isEdit" class="q-ma-md">
-        <q-btn label="编辑说明" @click="editSubtitle" flat color="primary" icon="create" />
+        <q-btn label="编辑说明" @click="editSubtitle" flat color="primary" icon="create"/>
       </div>
       <div v-else class="q-pa-md q-gutter-md">
-        <q-btn @click="changeSubtitle(subtitle.editContent)" flat label="保存" color="primary" icon="done" />
-        <q-btn @click="changeSubtitle(subtitle.content)" flat label="取消" color="secondary" icon="clear" />
+        <q-btn @click="changeSubtitle(subtitle.editContent)" flat label="保存" color="primary" icon="done"/>
+        <q-btn @click="changeSubtitle(subtitle.content)" flat label="取消" color="secondary" icon="clear"/>
       </div>
       <q-separator></q-separator>
       <div class="q-ma-md q-gutter-md">
@@ -40,15 +40,22 @@
       <div class="q-ma-md" v-if="list.length === 0">
         <div class="text-center text-grey text-subtitle1">暂无问题，请点击上方按钮添加。</div>
       </div>
-      <div v-for="(n, index) in list" v-bind:key="index">
-        <SimpleTextField v-if="n === 1" title="姓名" v-bind:no="index"></SimpleTextField>
-        <RadioField v-else-if="n === 2" title="你最喜欢的明星是？" v-bind:no="index" :content="radioList" :inline="inline"></RadioField>
-        <CheckBoxField v-else-if="n === 3" title="你的兴趣爱好" v-bind:no="index" :content="checkList" :inline="inline"></CheckBoxField>
-        <TextAreaField v-else-if="n === 4" title="你的意见" :no="index"></TextAreaField>
-        <SelectBoxField v-else-if="n === 5" title="你的性别" :no="index" :content="selectList"></SelectBoxField>
-        <FileUploadField v-else-if="n === 6" title="上传文件" :no="index"></FileUploadField>
-        <RateField v-else-if="n === 7" title="你的评分" :no="index"></RateField>
-      </div>
+      <q-form @submit="onSubmit">
+        <div v-for="(n, index) in list" v-bind:key="index">
+          <SimpleTextField v-if="n === 1" title="姓名" v-bind:no="index"></SimpleTextField>
+          <RadioField v-else-if="n === 2" title="你最喜欢的明星是？" v-bind:no="index" :content="radioList"
+                      :inline="inline"></RadioField>
+          <CheckBoxField v-else-if="n === 3" title="你的兴趣爱好" v-bind:no="index" :content="checkList"
+                         :inline="inline"></CheckBoxField>
+          <TextAreaField v-else-if="n === 4" title="你的意见" :no="index"></TextAreaField>
+          <SelectBoxField v-else-if="n === 5" title="你的性别" :no="index" :content="selectList"></SelectBoxField>
+          <FileUploadField v-else-if="n === 6" title="上传文件" :no="index"></FileUploadField>
+          <RateField v-else-if="n === 7" title="你的评分" :no="index"></RateField>
+        </div>
+        <div class="q-ma-md">
+          <q-btn label="提交" type="submit" color="primary"/>
+        </div>
+      </q-form>
       <q-separator></q-separator>
       <div class="q-my-md text-grey-7 text-subtitle2 text-center">Copyright @ notfound945 提供支持</div>
     </q-card>
@@ -143,6 +150,9 @@ export default {
   mounted () {
   },
   methods: {
+    onSubmit (evt) {
+      console.log('onSubmit ', evt.target)
+    },
     // markdown 2 html
     markdownSave (val) {
       // 获取预览文本
